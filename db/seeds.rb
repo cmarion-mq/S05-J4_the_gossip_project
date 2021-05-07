@@ -56,15 +56,27 @@ City.all.each do |city|
   end
 
   # Creation de 1 private message avec un nombre aléatoire de destinataires compris entre 1 et 3 maximum
-  recipient_number = Faker::Number.between(1, 3)
+  recipient_number = rand(1..3)
   
   if recipient_number == 1
-    privatemessage = PrivateMessage.create(content: Faker::GameOfThrones.quote, date: Faker::Date.forward(7), sender_id: User.all.sample.id, receiver_id: User.all.sample.id, receiver2_id: nil, receiver3_id: nil)
+    privatemessage = PrivateMessage.create(content: Faker::Lorem.sentence(word_count: 10),
+                                                    sender_id: User.all.sample.id,
+                                                    receiver_id: User.all.sample.id,
+                                                    receiver2_id: nil,
+                                                    receiver3_id: nil)
     
   elsif recipient_number == 2
-    privatemessage = PrivateMessage.create(content: Faker::GameOfThrones.quote, date: Faker::Date.forward(7), sender_id: User.all.sample.id, receiver_id: User.all.sample.id, receiver2_id: User.all.sample.id, receiver3_id: nil)
+    privatemessage = PrivateMessage.create(content: Faker::Lorem.sentence(word_count: 10),
+                                          sender_id: User.all.sample.id,
+                                          receiver_id: User.all.sample.id,
+                                          receiver2_id: User.all.sample.id,
+                                          receiver3_id: nil)
     
   elsif recipient_number == 3
-    privatemessage = PrivateMessage.create(content: Faker::GameOfThrones.quote, date: Faker::Date.forward(7), sender_id: User.all.sample.id, receiver_id: User.all.sample.id, receiver2_id: User.all.sample.id, receiver3_id: User.all.sample.id)
+    privatemessage = PrivateMessage.create(content: Faker::Lorem.sentence(word_count: 10),
+                                          sender_id: User.all.sample.id,
+                                          receiver_id: User.all.sample.id,
+                                          receiver2_id: User.all.sample.id,
+                                          receiver3_id: User.all.sample.id)
   end
 end
